@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.textSearch {
+    display: flex;
+    justify-content: center;
+}
+
+#nProduit{
+    width: 20rem;
+    height: 2rem;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    text-align: center;
+    margin: 1rem auto;
+}
+
+button {
+    height: 2rem;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 5rem;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    height: 40rem;
+    margin-top: 1rem;
+    background: yellow;
+}
+.leftimg {
+    margin: 1rem;
+}
+.righttxt {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 40rem;
+    justify-content: space-between;
+    
+}
+
+h2{
+    font-size: 1rem;
+}
+
+span{
+    font-weight: normal;
+}
