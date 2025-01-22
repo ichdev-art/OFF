@@ -4,39 +4,48 @@
     box-sizing: border-box;
 }
 
+body {
+    width: 60%;
+    margin: 0 auto;
+}
+
 .textSearch {
     display: flex;
-    justify-content: center;
+    justify-content: center;    
 }
 
 #nProduit {
     width: 20rem;
-    height: 2rem;
+    height: 3rem;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     text-align: center;
     margin: 1.5rem auto;
+    border-right: none;
 }
 
 button {
-    height: 2rem;
+    height: 3rem;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    width: 5rem;
     background: rgb(6, 247, 6);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 1.5rem auto;
 }
 
 .card {
     display: flex;
     align-items: center;
     height: 35rem;
-    background: yellow;
 }
 
 .leftimg {
     margin: 1rem;
 }
-
+.leftimg img {
+    width: 100%;
+}
 .righttxt {
     margin-right: 1rem;
     margin-left: 1rem;
@@ -44,7 +53,10 @@ button {
     flex-direction: column;
     height: 100%;
     justify-content: space-around;
-    align-items: center;
+}
+
+.righttxt h2 {
+    text-transform: capitalize;
 }
 
 h2 {
@@ -77,10 +89,64 @@ span {
 .corresp {
     display: flex;
     justify-content: space-around;
+    margin: 1rem;
+    gap: 1rem;
+}
+
+.cardbottom {
+    border: 1px solid black;
+    border-radius: 10px;
 }
 
 .cardbottom h2 {
     font-size: 1.5rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+}
+
+.sousCard h2 {
+    text-transform: capitalize;
+}
+
+.vert{
+    background: #00803e8a;
+}
+.vertclair {
+    background: #88bd258d;
+}
+.jaune {
+    background: #ffcc008f;
+}
+.orange {
+    background: #ffa6007c;
+}
+.rouge {
+    background: #e6321293;
+}
+.gris {
+    background: #f1f1f195;
+}
+
+.txtvert{
+    color: green;
+}
+.txtvertclair {
+    color: greenyellow;
+}
+.txtjaune {
+    color: yellow;
+}
+.txtorange {
+    color: orange;
+}
+.txtrouge {
+    color: red;
+}
+.txtgris {
+    color: gray;
+}
+@media (max-width:640px){
+    body {
+        width: 100%;
+    }
 }
