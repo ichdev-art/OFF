@@ -23,7 +23,7 @@ font-family: "Nunito", sans-serif;
 body {
     width: 60%;
     margin: 0 auto;
-    background: #F6F3F0;
+    background: #FFF2DF;
 }
 
 .textSearch {
@@ -32,8 +32,7 @@ body {
 }
 
 #nProduit {
-    width: 20rem;
-    height: 3rem;
+    height: 2rem;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     text-align: center;
@@ -42,11 +41,12 @@ body {
 }
 
 button {
-    height: 3rem;
+
+    height: 2rem;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding-right: 2rem;
     margin: 1.5rem auto;
 }
 
