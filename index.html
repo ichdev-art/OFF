@@ -9,12 +9,18 @@
 </head>
 
 <body>
-    <div class="textSearch">
-        <form role="search">
-            <input type="text" name="Produit" id="nProduit" placeholder="Entrez un produit"><button
-                type="submit">Recherche</button>
-        </form>
-    </div>
+    <form role="search">
+        <div class="navbar">
+            <div class="rightnav">
+                <a href="./index.html">Accueil</a>
+            </div>
+            <div class="leftnav">
+                <input type="text" name="Produit" id="nProduit" placeholder="Entrez un code barre">
+                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button type="submit">Scanners</button>
+            </div>
+        </div>
+    </form>
     <div class="card">
         <!-- <div class="leftimg">
             <img src="selected_images/front/display/fr" alt="Image du produit">
@@ -49,6 +55,8 @@
         </div> -->
     </div>
     <script src="./assets/js/index.js"></script>
+    <script src="https://kit.fontawesome.com/8b462dcb6d.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

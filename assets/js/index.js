@@ -1,7 +1,7 @@
 let params = new URLSearchParams(document.location.search)
 let idProduit = params.get("Produit")
 
-if (idProduit == null){
+if (idProduit == null) {
     idProduit = "5997523311230"
 }
 
@@ -13,15 +13,15 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
         let nutriscore = data.product.nutriscore_grade
         let nutriscoreimg = ""
         let bgnutri = ""
-        let qualynutri =""
-        let textcl= ""
+        let qualynutri = ""
+        let textcl = ""
 
         switch (nutriscore) {
             case "a":
                 nutriscoreimg = "assets/img/nutriscore/A.svg"
-            bgnutri = "vert"
-            qualynutri = "Tres bonne qualité nutritionnelle"
-            textcl = "txtvert"
+                bgnutri = "vert"
+                qualynutri = "Tres bonne qualité nutritionnelle"
+                textcl = "txtvert"
                 break;
             case "b":
                 nutriscoreimg = "assets/img/nutriscore/B.svg"
@@ -60,7 +60,7 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
         let bgnova = ""
         let textnovacl = ""
         let transformed = ""
-        
+
         switch (novascore) {
             case 1:
                 novaimg = "assets/img/novascore/Nova1.svg"
@@ -69,7 +69,7 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
                 transformed = "Aliments non transformés ou minimalement transformés"
                 break;
             case 2:
-                novaimg= "assets/img/novascore/Nova2.svg"
+                novaimg = "assets/img/novascore/Nova2.svg"
                 bgnova = "vert"
                 textnovacl = "txtvert"
                 transformed = "Ingrédients culinaires transformés"
@@ -86,7 +86,7 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
                 textnovacl = "txtrouge"
                 transformed = "Aliments ultra-transformés"
                 break;
-            default :
+            default:
                 novaimg = "assets/img/novascore/NovaIDK.svg"
                 bgnova = "gris"
                 textnovacl = "txtgris"
@@ -118,7 +118,7 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
             <div class="sousCard1 ${bgnova}">
                 <img src="${novaimg}" alt="novascore">
                 <h2 class="${textnovacl} txtc">${transformed}</h2>
-                <p>${data.product.nova_groups_markers == null ? "": data.product.nova_groups_markers[4].length + " Marqueurs d'ultra-transformation"} </p>
+                <p>${data.product.nova_groups_markers == null ? "" : data.product.nova_groups_markers[4].length + " Marqueurs d'ultra-transformation"} </p>
             </div>
         </div>`
 

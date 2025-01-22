@@ -8,56 +8,72 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
-h1,h2 {
-font-family: "Lobster", sans-serif;
-font-weight: normal;
+a {
+    text-decoration: none;
+    color: #343A40;
+    font-family: "Lobster", sans-serif;
+    font-size: 1.8rem;
 }
 
-h2 span,p {
-font-family: "Nunito", sans-serif;
+h1,
+h2 {
+    font-family: "Lobster", sans-serif;
+    font-weight: normal;
+    font-size: 1.8rem;
+    color: #343A40;
+}
+
+h2 span,
+p {
+    font-family: "Nunito", sans-serif;
+    font-size: 1rem;
+    color: #343A40;
 }
 
 body {
     width: 60%;
     margin: 0 auto;
-    background: #FFF2DF;
+    background: #F8F9FA;
 }
 
-.textSearch {
+.navbar {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background: #F1F1F1;
 }
 
 #nProduit {
     height: 2rem;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
     text-align: center;
-    margin: 1.5rem auto;
-    border-right: none;
+    background: #85c1e985;
+    color: #343A40;
 }
 
 button {
-
     height: 2rem;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    padding-left: 0.5rem;
-    padding-right: 2rem;
-    margin: 1.5rem auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: linear-gradient(90deg, #85C1E9 0%, #007BFF 100%);
+    color: #343A40;
 }
 
 .card {
     display: flex;
     align-items: center;
     height: 35rem;
-    background: white;
+    background: #F1F1F1;
     border-radius: 10px;
     margin-bottom: 1rem;
-    box-shadow: 7px 7px 5px gray;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .leftimg {
@@ -79,10 +95,6 @@ button {
 
 .gramme {
     text-transform: none;
-}
-
-h2 {
-    font-size: 1rem;
 }
 
 span {
@@ -116,9 +128,9 @@ span {
 }
 
 .cardbottom {
-    box-shadow: 7px 7px 5px gray;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    background: rgba(206, 204, 204, 0.544);
+    background: #F1F1F1;
     padding: 1rem;
 }
 
@@ -131,40 +143,50 @@ span {
     text-transform: capitalize;
 }
 
-.vert{
+.vert {
     background: #00803e8a;
 }
+
 .vertclair {
     background: #88bd258d;
 }
+
 .jaune {
     background: #ffcc008f;
 }
+
 .orange {
     background: #ffa6007c;
 }
+
 .rouge {
     background: #e6321293;
 }
+
 .gris {
     background: #f1f1f195;
 }
 
-.txtvert{
+.txtvert {
     color: green;
 }
+
 .txtvertclair {
     color: greenyellow;
 }
+
 .txtjaune {
     color: yellow;
 }
+
 .txtorange {
     color: orange;
 }
+
 .txtrouge {
     color: red;
 }
+
 .txtgris {
     color: gray;
 }
@@ -176,18 +198,22 @@ span {
 .sousCard1 p {
     text-align: center;
 }
-@media (max-width:640px){
+
+@media (max-width:640px) {
     body {
         width: 100%;
     }
 
-    .corresp{
+    .corresp {
         flex-direction: column;
     }
+
     .card {
         flex-direction: column;
         height: max-content;
         margin-bottom: 1rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
     }
 
     form {
@@ -195,11 +221,30 @@ span {
         border-top-left-radius: 10px;
     }
 
-    button {
-        padding: 0;
-    }
-
     .cardbottom h2 {
         text-align: center;
+    }
+
+    .cardbottom {
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+
+    h1,
+    h2 {
+        font-size: 1rem;
+    }
+
+    h2 span,
+    p {
+        font-size: 0.8rem;
+    }
+
+    .righttxt {
+        margin-bottom: 1rem;
+    }
+
+    .leftimg img {
+        width: 100%;
     }
 }
