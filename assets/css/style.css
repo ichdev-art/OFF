@@ -33,9 +33,9 @@ p {
 }
 
 body {
+    background: #F8F9FA;
     width: 60%;
     margin: 0 auto;
-    background: #F8F9FA;
 }
 
 .navbar {
@@ -69,7 +69,7 @@ button {
 .card {
     display: flex;
     align-items: center;
-    height: 35rem;
+    height: 100%;
     background: #F1F1F1;
     border-radius: 10px;
     margin-bottom: 1rem;
@@ -81,12 +81,8 @@ button {
 }
 
 .righttxt {
-    margin-right: 1rem;
-    margin-left: 1rem;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-around;
+    margin: 0.5rem auto;
+    width: 100%;
 }
 
 .righttxt h2 {
@@ -210,7 +206,6 @@ span {
 
     .card {
         flex-direction: column;
-        height: max-content;
         margin-bottom: 1rem;
         margin-right: 1rem;
         margin-left: 1rem;
@@ -241,10 +236,7 @@ span {
     }
 
     .righttxt {
-        margin-bottom: 1rem;
-    }
-
-    .leftimg img {
+        margin: 0.5rem auto;
         width: 100%;
     }
 }

@@ -10,6 +10,9 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
+
+
+
         let nutriscore = data.product.nutriscore_grade
         let nutriscoreimg = ""
         let bgnutri = ""
@@ -93,7 +96,11 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
                 transformed = "Degré de transformation des aliments inconnu"
                 break;
         }
+        let countrie = ""
 
+        for (let i = 0; i < 5; i++) {
+            countrie += data.product.countries_hierarchy[i] + ","
+        }
         const card = `<div class="leftimg">
             <img src=${data.product.selected_images.front.display.fr} alt="Image du produit">
         </div>
@@ -106,8 +113,14 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
             <h2>Catégorie : <span>${data.product.categories.split("en:")[0]}${data.product.categories_old.split("en:")[1]}</span></h2>
             <h2>Lieux de fabrication ou de transformation : <span>${data.product.manufacturing_places}</span></h2>
             <h2>Magasins : <span>${data.product.stores_tags}</span></h2>
-            <h2>Pays de vente : <span>${data.product.countries}</span></h2>
-        </div>`
+            <div class = pays>
+            <h2>Pays de vente : <span>${countrie}</span></h2>
+            </div>
+             </div>`
+
+
+
+
         const cardbottom = `<h2>Correspondance avec vos préférences</h2>
         <div class="corresp">
             <div class="sousCard ${bgnutri}">
@@ -118,7 +131,7 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
             <div class="sousCard1 ${bgnova}">
                 <img src="${novaimg}" alt="novascore">
                 <h2 class="${textnovacl} txtc">${transformed}</h2>
-                <p>${data.product.nova_groups_markers == null ? "" : data.product.nova_groups_markers[4].length + " Marqueurs d'ultra-transformation"} </p>
+                <p>${data.product.nova_groups_markers[4] == null ? "" : data.product.nova_groups_markers[4].length + " Marqueurs d'ultra-transformation"} </p>
             </div>
         </div>`
 
