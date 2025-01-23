@@ -133,7 +133,7 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
             <div class="sousCard1 ${bgnova}">
                 <img src="${novaimg}" alt="novascore">
                 <h2 class="${textnovacl} txtc">${transformed}</h2>
-                <p>${data.product.nova_groups_markers[4] == null ? "" : data.product.nova_groups_markers[4].length + " Marqueurs d'ultra-transformation"} </p>
+                <p>${data.product.nova_groups_markers == null ? "" : data.product.nova_groups_markers[4].length + " Marqueurs d'ultra-transformation"} </p>
             </div>
         </div>
         </div>`
