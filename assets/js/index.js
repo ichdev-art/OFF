@@ -122,7 +122,8 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
              </div>`
 
 
-        const cardbottom = `<h2>Correspondance avec vos préférences</h2>
+        const cardbottom = `<div class="cardbottom">
+        <h2>Correspondance avec vos préférences</h2>
         <div class="corresp">
             <div class="sousCard ${bgnutri}">
                 <img src="${nutriscoreimg}" alt="nutriscore">
@@ -134,6 +135,7 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
                 <h2 class="${textnovacl} txtc">${transformed}</h2>
                 <p>${data.product.nova_groups_markers[4] == null ? "" : data.product.nova_groups_markers[4].length + " Marqueurs d'ultra-transformation"} </p>
             </div>
+        </div>
         </div>`
 
         document.querySelector(".card").innerHTML = card
