@@ -97,14 +97,14 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
                 transformed = "Degré de transformation des aliments inconnu"
                 break;
         }
-        let countrie = ""
 
-        if (data.product.countries_tags > 5) {
+        let countrie = ""
+        if (data.product.countries_tags.length > 5) {
             for (let i = 0; i < 5; i++) {
                 countrie += data.product.countries_tags[i] + ","
             }
         } else {
-            countrie += data.product.countries_tags
+            countrie += data.product.countries_tags + ","
         }
         const card = `<div class="leftimg">
             <img src=${data.product.selected_images.front.display.fr} alt="Image du produit">
@@ -118,9 +118,7 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
             <h2>Catégorie : <span>${data.product.categories.split("en:")[0]}${data.product.categories_old.split("en:")[1]}</span></h2>
             <h2>Lieux de fabrication ou de transformation : <span>${data.product.manufacturing_places}</span></h2>
             <h2>Magasins : <span>${data.product.stores_tags}</span></h2>
-            <div class = pays>
             <h2>Pays de vente : <span>${countrie}</span></h2>
-            </div>
              </div>`
 
 
