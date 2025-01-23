@@ -1,17 +1,18 @@
 let params = new URLSearchParams(document.location.search)
 let idProduit = params.get("Produit")
-
-if (idProduit == null) {
+if (idProduit == null || idProduit == "") {
     idProduit = "5997523311230"
 }
+
 
 
 fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
-
-
+        if (data.status == 0) {
+            document.getElementById("product").innerHTML = `<h1> Le produit ou le code-barre rechercher n'existe pas dans notre bases de données`
+        }
 
         let nutriscore = data.product.nutriscore_grade
         let nutriscoreimg = ""
@@ -98,8 +99,12 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
         }
         let countrie = ""
 
-        for (let i = 0; i < 5; i++) {
-            countrie += data.product.countries_hierarchy[i] + ","
+        if (data.product.countries_tags > 5) {
+            for (let i = 0; i < 5; i++) {
+                countrie += data.product.countries_tags[i] + ","
+            }
+        } else {
+            countrie += data.product.countries_tags
         }
         const card = `<div class="leftimg">
             <img src=${data.product.selected_images.front.display.fr} alt="Image du produit">
@@ -119,8 +124,6 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
              </div>`
 
 
-
-
         const cardbottom = `<h2>Correspondance avec vos préférences</h2>
         <div class="corresp">
             <div class="sousCard ${bgnutri}">
@@ -136,5 +139,7 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
         </div>`
 
         document.querySelector(".card").innerHTML = card
-        document.querySelector(".cardbottom").innerHTML = cardbottom
+        document.querySelector(".footer").innerHTML = cardbottom
     })
+
+
