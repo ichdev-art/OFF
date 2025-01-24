@@ -12,15 +12,34 @@
     <form role="search">
         <div class="navbar">
             <div class="rightnav">
-                <a href="./scan.html">Accueil</a>
+                <a href="./index.html">Accueil</a>
             </div>
             <div class="leftnav">
                 <input type="text" name="Produit" id="nProduit" placeholder="Entrez un code barre">
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <a href="./scan.html" type="submit" id="buttonScan">Scanners</a>
+                <button type="submit" id="search_button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button type="button" id="scan_button">Scanners</button>
             </div>
         </div>
     </form>
+    <div class="containerV" id="video_container">
+        <video id="video"></video>
+    </div>
+    <main class="wrapper">
+        <section class="containe" id="demo-content">
+            <div id="button_container" class="" style="display:none">
+                <a class="button" id="startButton">Start</a>
+                <a class="button" id="resetButton">Reset</a>
+            </div>
+
+            <div id="sourceSelectPanel" style="display:none">
+                <label for="sourceSelect">Change video source :</label>
+                <select id="sourceSelect" style="max-width:400px">
+                </select>
+            </div>
+            <label class="title visually-hidden">Resultat :</label>
+            <pre class="title visually-hidden"><code id="result"></code></pre>
+        </section>
+    </main>
     <div class="card">
         <!-- <div class="leftimg">
             <img src="selected_images/front/display/fr" alt="Image du produit">
@@ -55,9 +74,13 @@
         </div>
     </div> -->
     </div>
+
+
     <div id="product"></div>
     <script src="./assets/js/index.js"></script>
     <script src="https://kit.fontawesome.com/8b462dcb6d.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://unpkg.com/@zxing/library@latest/umd/index.min.js"></script>
+
 
 </body>
 

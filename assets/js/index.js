@@ -4,8 +4,6 @@ if (idProduit == null || idProduit == "") {
     idProduit = "5997523311230"
 }
 
-
-
 fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
     .then(response => response.json())
     .then(data => {
@@ -22,37 +20,37 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
 
         switch (nutriscore) {
             case "a":
-                nutriscoreimg = "assets/img/nutriscore/A.svg"
+                nutriscoreimg = "assets/img/Nutriscore/A.svg"
                 bgnutri = "vert"
                 qualynutri = "Tres bonne qualité nutritionnelle"
                 textcl = "txtvert"
                 break;
             case "b":
-                nutriscoreimg = "assets/img/nutriscore/B.svg"
+                nutriscoreimg = "assets/img/Nutriscore/B.svg"
                 bgnutri = "vertclair"
                 qualynutri = "Bonne qualité nutritionnelle"
                 textcl = "txtvertclair"
                 break;
             case "c":
-                nutriscoreimg = "assets/img/nutriscore/C.svg"
+                nutriscoreimg = "assets/img/Nutriscore/C.svg"
                 bgnutri = "jaune"
                 qualynutri = "Qualité nutritionnelle moyenne"
                 textcl = "txtjaune"
                 break;
             case "d":
-                nutriscoreimg = "assets/img/nutriscore/D.svg"
+                nutriscoreimg = "assets/img/Nutriscore/D.svg"
                 bgnutri = "orange"
                 qualynutri = "Qualité nutritionnelle basse"
                 textcl = "txtorange"
                 break;
             case "e":
-                nutriscoreimg = "assets/img/nutriscore/E.svg"
+                nutriscoreimg = "assets/img/Nutriscore/E.svg"
                 bgnutri = "rouge"
                 qualynutri = "Qualité nutritionnelle mauvaise"
                 textcl = "txtrouge"
                 break;
             default:
-                nutriscoreimg = "assets/img/nutriscore/IDK.svg"
+                nutriscoreimg = "assets/img/Nutriscore/IDK.svg"
                 bgnutri = "gris"
                 qualynutri = "Qualité nutritionnelle inconnu"
                 textcl = "txtgris"
@@ -67,31 +65,31 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
 
         switch (novascore) {
             case 1:
-                novaimg = "assets/img/novascore/Nova1.svg"
+                novaimg = "assets/img/Novascore/Nova1.svg"
                 bgnova = "vert"
                 textnovacl = "txtvert"
                 transformed = "Aliments non transformés ou minimalement transformés"
                 break;
             case 2:
-                novaimg = "assets/img/novascore/Nova2.svg"
+                novaimg = "assets/img/Novascore/Nova2.svg"
                 bgnova = "vert"
                 textnovacl = "txtvert"
                 transformed = "Ingrédients culinaires transformés"
                 break;
             case 3:
-                novaimg = "assets/img/novascore/Nova3.svg"
+                novaimg = "assets/img/Novascore/Nova3.svg"
                 bgnova = "vert"
                 textnovacl = "txtvert"
                 transformed = "Aliments transformés"
                 break;
             case 4:
-                novaimg = "assets/img/novascore/Nova4.svg"
+                novaimg = "assets/img/Novascore/Nova4.svg"
                 bgnova = "rouge"
                 textnovacl = "txtrouge"
                 transformed = "Aliments ultra-transformés"
                 break;
             default:
-                novaimg = "assets/img/novascore/NovaIDK.svg"
+                novaimg = "assets/img/Novascore/NovaIDK.svg"
                 bgnova = "gris"
                 textnovacl = "txtgris"
                 transformed = "Degré de transformation des aliments inconnu"
@@ -133,7 +131,7 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
             <div class="sousCard1 ${bgnova}">
                 <img src="${novaimg}" alt="novascore">
                 <h2 class="${textnovacl} txtc">${transformed}</h2>
-                <p>${data.product.nova_groups_markers == null ? "" : data.product.nova_groups_markers[4].length + " Marqueurs d'ultra-transformation"} </p>
+                <p>${data.product.nova_groups == null ? "" : data.product.nova_groups + " Marqueurs d'ultra-transformation"} </p>
             </div>
         </div>
         </div>`
@@ -141,4 +139,70 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
         document.querySelector(".card").innerHTML = card
         document.querySelector(".footer").innerHTML = cardbottom
     })
+document.querySelector("#scan_button").addEventListener("click", function () {
+    let selectedDeviceId;
+    const codeReader = new ZXing.BrowserMultiFormatReader();
+    console.log("ZXing code reader initialized");
+    codeReader
+        .listVideoInputDevices()
+        .then((videoInputDevices) => {
+            const sourceSelect = document.getElementById("sourceSelect");
+            selectedDeviceId = videoInputDevices[0].deviceId;
+            if (videoInputDevices.length >= 1) {
+                videoInputDevices.forEach((element) => {
+                    const sourceOption = document.createElement("option");
+                    sourceOption.text = element.label;
+                    sourceOption.value = element.deviceId;
+                    sourceSelect.appendChild(sourceOption);
+                });
+                sourceSelect.onchange = () => {
+                    selectedDeviceId = sourceSelect.value;
+                };
+
+                const sourceSelectPanel = document.getElementById("sourceSelectPanel");
+                sourceSelectPanel.style.display = "block";
+                document.querySelector("#button_container").style.display = "block";
+            }
+            document.getElementById("startButton").addEventListener("click", () => {
+                codeReader.decodeFromVideoDevice(
+                    selectedDeviceId,
+                    "video",
+                    (result, err) => {
+                        if (result) {
+
+                            console.log(result);
+                            document.getElementById("result").textContent = result.text;
+                            document.querySelector("#nProduit").value = result.text;
+
+                            const son = new Audio();
+                            son.src = "../bip.mp3";
+                            son.play().then(() => {
+                                setTimeout(() => {
+                                    document.getElementById("search_button").click()
+                                }, "1000");
+
+                            })
+
+                        }
+                        if (err && !(err instanceof ZXing.NotFoundException)) {
+                            console.error(err);
+                            document.getElementById("result").textContent = err;
+                        }
+                    }
+                );
+
+                console.log(
+                    `Started continous decode from camera with id ${selectedDeviceId}`
+                );
+            });
+            document.getElementById("resetButton").addEventListener("click", () => {
+                codeReader.reset();
+                document.getElementById("result").textContent = "";
+                console.log("Reset.");
+            });
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+});
 
