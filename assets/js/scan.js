@@ -1,7 +1,7 @@
 
 
 
-document.querySelector("#scan_bouton").addEventListener("click", function () {
+document.querySelector("#buttonScan").addEventListener("click", function () {
     let selectedDeviceId;
     const codeReader = new ZXing.BrowserMultiFormatReader();
     console.log("ZXing code reader initialized");
@@ -36,15 +36,9 @@ document.querySelector("#scan_bouton").addEventListener("click", function () {
 
                             console.log(result);
                             document.getElementById("result").textContent = result.text;
-                            document.querySelector("#searchbutton").value = result.text;
+                            document.querySelector("#nProduit").value = result.text;
+                            document.getElementById("searchbutton").click()
 
-                            const son = new Audio();
-                            son.src = "../../bip_sound.mp3";
-                            son.play().then(() => {
-                                setTimeout(() => {
-                                    document.getElementById("search_button").click()
-                                }, "1000");
-                            })
                         }
                         if (err && !(err instanceof ZXing.NotFoundException)) {
                             console.error(err);
@@ -62,6 +56,9 @@ document.querySelector("#scan_bouton").addEventListener("click", function () {
                 document.getElementById("result").textContent = "";
                 console.log("Reset.");
             });
+
+            console.log(videoInputDevices); // Pour vérifier les caméras détectées
+            console.log(selectedDeviceId);  // Pour confirmer l'ID de l'appareil sélectionné
         })
         .catch((err) => {
             console.error(err);
