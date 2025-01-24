@@ -1,10 +1,3 @@
-let params = new URLSearchParams(document.location.search)
-let idProduit = params.get("Produit")
-if (idProduit == null || idProduit == "") {
-    idProduit = "5997523311230"
-}
-
-
 
 
 
@@ -38,6 +31,26 @@ document.querySelector("#scan_bouton").addEventListener("click", function () {
                 codeReader.decodeFromVideoDevice(
                     selectedDeviceId,
                     "video",
+                    (result, err) => {
+                        if (result) {
+
+                            console.log(result);
+                            document.getElementById("result").textContent = result.text;
+                            document.querySelector("#search_content").value = result.text;
+
+                            const son = new Audio();
+                            son.src = "../../bip_sound.mp3";
+                            son.play().then(() => {
+                                setTimeout(() => {
+                                    document.getElementById("search_button").click()
+                                }, "1000");
+                            })
+                        }
+                        if (err && !(err instanceof ZXing.NotFoundException)) {
+                            console.error(err);
+                            document.getElementById("result").textContent = err;
+                        }
+                    }
                 );
 
                 console.log(
