@@ -36,7 +36,7 @@ document.querySelector("#scan_bouton").addEventListener("click", function () {
 
                             console.log(result);
                             document.getElementById("result").textContent = result.text;
-                            document.querySelector("#search_content").value = result.text;
+                            document.querySelector("#searchbutton").value = result.text;
 
                             const son = new Audio();
                             son.src = "../../bip_sound.mp3";
