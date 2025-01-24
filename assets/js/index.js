@@ -142,4 +142,3 @@ fetch(`https://world.openfoodfacts.org/api/v2/product/${idProduit}`)
         document.querySelector(".footer").innerHTML = cardbottom
     })
 
-
